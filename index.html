@@ -31,9 +31,24 @@
     }
   </script>
   <style>
+    /* ========== STYLES GÉNÉRAUX ========== */
     * { transition: background-color 0.3s ease, border-color 0.2s ease, color 0.2s ease; }
 
-    /* Modale */
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* Conteneurs principaux doivent permettre les débordements pour les dropdowns */
+    header, .layout-container, .relative {
+      overflow: visible !important;
+    }
+
+    /* Position relative pour les conteneurs de boutons */
+    .cart-button-container,
+    .wishlist-button-container {
+      position: relative;
+    }
+
+    /* ========== MODALE ========== */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -72,7 +87,7 @@
     .dark .modal-close { color: #aaa; }
     .modal-close:hover { color: #d41132; }
 
-    /* Badges */
+    /* ========== BADGES ========== */
     .cart-badge, .wishlist-badge {
       position: absolute;
       top: -5px;
@@ -89,7 +104,7 @@
       font-weight: bold;
     }
 
-    /* Bouton + */
+    /* ========== BOUTON + ========== */
     .add-to-cart-btn {
       position: absolute;
       top: 10px;
@@ -112,7 +127,7 @@
     .add-to-cart-btn:hover { transform: scale(1.1); background-color: #b30e2a; }
     .add-to-cart-btn:active { transform: scale(0.95); }
 
-    /* Bouton cœur */
+    /* ========== BOUTON CŒUR ========== */
     .wishlist-btn {
       position: absolute;
       top: 10px;
@@ -137,7 +152,7 @@
     .dark .wishlist-btn { background-color: #2d1a1f; color: #d41132; }
     .dark .wishlist-btn.active { background-color: #d41132; color: white; }
 
-    /* Notification */
+    /* ========== NOTIFICATION ========== */
     .notification {
       position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white;
       padding: 12px 20px; border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -152,7 +167,7 @@
       .notification.show { transform: translateY(0); }
     }
 
-    /* Panier et wishlist dropdown (desktop) */
+    /* ========== DROPDOWN PANIER / FAVORIS (DESKTOP) ========== */
     .cart-dropdown, .wishlist-dropdown {
       position: absolute;
       top: 100%;
@@ -163,14 +178,14 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       margin-top: 10px;
       display: none;
-      z-index: 100;
+      z-index: 9999;
       max-height: 500px;
       overflow-y: auto;
     }
     .dark .cart-dropdown, .dark .wishlist-dropdown { background-color: #2d1a1f; color: white; }
     .cart-dropdown.show, .wishlist-dropdown.show { display: block; }
 
-    /* Éléments communs */
+    /* ========== ÉLÉMENTS COMMUNS PANIER/FAVORIS ========== */
     .cart-item, .wishlist-item {
       display: flex; align-items: center; padding: 12px; border-bottom: 1px solid #eee;
     }
@@ -212,23 +227,23 @@
 
     .cart-button-container, .wishlist-button-container { position: relative; }
 
-    /* Styles mobile pour les dropdowns */
+    /* ========== STYLES MOBILE (BOTTOM SHEET) ========== */
     @media (max-width: 768px) {
       .cart-dropdown, .wishlist-dropdown {
-        position: fixed;
-        top: auto;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        border-radius: 20px 20px 0 0;
-        box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
-        margin-top: 0;
-        max-height: 85vh;
+        position: fixed !important;
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        border-radius: 20px 20px 0 0 !important;
+        box-shadow: 0 -5px 25px rgba(0,0,0,0.15) !important;
+        margin-top: 0 !important;
+        max-height: 85vh !important;
         display: block;
         transform: translateY(100%);
         transition: transform 0.3s ease-out;
-        z-index: 1000;
+        z-index: 9999 !important;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         -webkit-font-smoothing: antialiased;
@@ -287,19 +302,19 @@
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
-  <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+  <div class="relative flex h-auto min-h-screen w-full flex-col overflow-visible">
     <div class="layout-container flex h-full grow flex-col">
-      
-      <!-- En-tête (Header) avec boutons de thème, panier et favoris -->
-      <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-primary/20 px-6 md:px-20 py-4 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+
+      <!-- HEADER FIXE -->
+      <header class="fixed top-0 left-0 right-0 z-[1000] flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-primary/20 px-6 md:px-20 py-4 bg-background-light dark:bg-background-dark">
         <div class="flex items-center gap-12">
           <div class="flex items-center gap-3 text-primary">
             <span class="material-symbols-outlined text-3xl">bakery_dining</span>
             <h2 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold leading-tight tracking-tight">Royal Choco</h2>
           </div>
           <nav class="hidden md:flex items-center gap-8">
-            <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Accueil</a>
-            <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Nos produits</a>
+            <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#accueil">Accueil</a>
+            <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#produit">Nos produits</a>
             <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Cadeaux</a>
             <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Compte</a>
           </nav>
@@ -310,7 +325,7 @@
               <div class="text-slate-500 dark:text-cocoa-light flex items-center justify-center pl-3">
                 <span class="material-symbols-outlined text-xl">search</span>
               </div>
-              <input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-sm placeholder:text-slate-400 dark:placeholder:text-cocoa-light" placeholder="Rechercher nos saveurs" value="" />
+              <input id="search-input" class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-sm placeholder:text-slate-400 dark:placeholder:text-cocoa-light" placeholder="Rechercher nos saveurs" value="" />
             </div>
           </label>
           <div class="flex gap-3">
@@ -320,6 +335,33 @@
                 <span class="material-symbols-outlined">shopping_cart</span>
               </button>
               <span id="cart-count" class="cart-badge" style="display: none;">0</span>
+
+              <!-- Panier déroulant -->
+              <div id="cart-dropdown" class="cart-dropdown">
+                <div class="cart-handle md:hidden" onclick="closeCart()"><span></span></div>
+                <div class="cart-header md:hidden flex justify-between items-center p-4 border-b dark:border-gray-700">
+                  <h3 class="font-bold text-lg">Votre panier</h3>
+                  <span class="cart-close text-2xl cursor-pointer" onclick="closeCart()">×</span>
+                </div>
+                <div id="cart-items-container"></div>
+                <div id="cart-total-container" style="display: none;">
+                  <div class="cart-footer">
+                    <div class="cart-total">
+                      <span>Total:</span>
+                      <span id="cart-total-amount">0 Ar</span>
+                    </div>
+                    <div class="cart-buttons">
+                      <button id="cart-checkout-whatsapp" class="cart-checkout-btn cart-checkout-btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                      </button>
+                      <button id="cart-checkout-facebook" class="cart-checkout-btn cart-checkout-btn-facebook">
+                        <i class="fab fa-facebook-messenger"></i> Commander sur Messenger
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div id="empty-cart" class="empty-cart">Votre panier est vide</div>
+              </div>
             </div>
 
             <!-- Bouton favoris -->
@@ -328,6 +370,17 @@
                 <span class="material-symbols-outlined">favorite</span>
               </button>
               <span id="wishlist-count" class="wishlist-badge" style="display: none;">0</span>
+
+              <!-- Wishlist déroulante -->
+              <div id="wishlist-dropdown" class="wishlist-dropdown">
+                <div class="wishlist-handle md:hidden" onclick="closeWishlist()"><span></span></div>
+                <div class="wishlist-header md:hidden flex justify-between items-center p-4 border-b dark:border-gray-700">
+                  <h3 class="font-bold text-lg">Mes favoris</h3>
+                  <span class="wishlist-close text-2xl cursor-pointer" onclick="closeWishlist()">×</span>
+                </div>
+                <div id="wishlist-items-container"></div>
+                <div id="empty-wishlist" class="empty-wishlist">Votre liste de favoris est vide</div>
+              </div>
             </div>
 
             <!-- Bouton thème -->
@@ -343,47 +396,11 @@
       <div id="cart-overlay" class="cart-overlay" style="display: none;"></div>
       <div id="wishlist-overlay" class="wishlist-overlay" style="display: none;"></div>
 
-      <!-- Panier déroulant -->
-      <div id="cart-dropdown" class="cart-dropdown">
-        <div class="cart-handle" onclick="closeCart()"><span></span></div>
-        <div class="cart-header">
-          <h3>Votre panier</h3>
-          <span class="cart-close" onclick="closeCart()">×</span>
-        </div>
-        <div id="cart-items-container"></div>
-        <div id="cart-total-container" style="display: none;">
-          <div class="cart-footer">
-            <div class="cart-total">
-              <span>Total:</span>
-              <span id="cart-total-amount">0 Ar</span>
-            </div>
-            <div class="cart-buttons">
-              <button id="cart-checkout-whatsapp" class="cart-checkout-btn cart-checkout-btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
-              </button>
-              <button id="cart-checkout-facebook" class="cart-checkout-btn cart-checkout-btn-facebook">
-                <i class="fab fa-facebook-messenger"></i> Commander sur Messenger
-              </button>
-            </div>
-          </div>
-        </div>
-        <div id="empty-cart" class="empty-cart">Votre panier est vide</div>
-      </div>
-
-      <!-- Wishlist déroulante -->
-      <div id="wishlist-dropdown" class="wishlist-dropdown">
-        <div class="wishlist-handle" onclick="closeWishlist()"><span></span></div>
-        <div class="wishlist-header">
-          <h3>Mes favoris</h3>
-          <span class="wishlist-close" onclick="closeWishlist()">×</span>
-        </div>
-        <div id="wishlist-items-container"></div>
-        <div id="empty-wishlist" class="empty-wishlist">Votre liste de favoris est vide</div>
-      </div>
-
-      <main class="flex-1">
+      <!-- MAIN CONTENT (avec padding-top pour compenser le header fixe) -->
+      <main class="flex-1 pt-[72px] md:pt-20">
         <div class="@container">
-          <div class="p-0 md:p-6 lg:p-10">
+          <!-- Bannière héro -->
+          <div class="p-0 md:p-6 lg:p-10" id="accueil">
             <div class="relative flex min-h-[600px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-none md:rounded-xl items-center justify-center p-8 text-center" style='background-image: linear-gradient(rgba(34, 16, 19, 0.6) 0%, rgba(34, 16, 19, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCl6lMVROGy5ght5dzNs4NQdy85KoO5XGdUj4TiXV4OjOStK1hcpmk3suF6lAk-j-A05pZ4L9VE4B0wll9SK6qoqjN79X-ho27w6uGiak3Z-Wemd7p-0I-o-MKsjMXKtVpQn8uh0TeHlQgufJXTcESjc-NB9Pt9nrQmgt2jSmFqecl7MnXEh9izd1VDenh44IayKLLkIOhhkO2ldWzKJG-YSjjkEP-EZ7QviWGCtvKPKL4LqUbUgClg4SvSdozYOh74mm3Px_XZld4");'>
               <div class="flex flex-col gap-6 max-w-3xl">
                 <h1 class="text-white text-5xl md:text-7xl font-serif font-bold leading-tight tracking-tight">
@@ -405,7 +422,7 @@
           </div>
 
           <!-- Section Produits -->
-          <div class="max-w-7xl mx-auto px-6 md:px-10 py-16">
+          <div class="max-w-7xl mx-auto px-6 md:px-10 py-16" id="produit">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
               <div class="flex flex-col gap-2">
                 <span class="text-primary font-bold tracking-widest uppercase text-xs">L'art de la sélection</span>
@@ -416,7 +433,7 @@
                 <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
               </a>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="products-grid">
               <!-- Produit 1 -->
               <div class="flex flex-col gap-5 group" data-id="praline" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/choco1.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
@@ -571,13 +588,18 @@
         </div>
       </main>
 
-      <!-- Footer (inchangé) -->
-      <footer class="bg-slate-50 dark:bg-background-dark border-t border-slate-200 dark:border-primary/20 py-16 px-6 md:px-20">
-        <!-- ... -->
-      </footer>
+<footer class="bg-slate-50 dark:bg-background-dark border-t border-slate-200 dark:border-primary/20 py-10 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-2 text-primary">
+      <span class="material-symbols-outlined text-2xl">bakery_dining</span>
+      <span class="font-serif font-bold text-lg text-slate-900 dark:text-white">Royal Choco</span>
     </div>
+    <p class="text-slate-500 dark:text-cocoa-light text-sm text-center">
+      © Tous droits réservés, HECM L3 – 2026
+    </p>
+    <!-- Laisser un espace vide pour garder l'équilibre -->
   </div>
-
+</footer>
   <!-- Notification d'ajout au panier / favoris -->
   <div id="notification" class="notification"><i class="fas fa-check-circle"></i> <span id="notification-message">Produit ajouté au panier</span></div>
 
@@ -599,9 +621,7 @@
     const whatsappNumber = '261335936982';
     const facebookUrl = 'votre.page.facebook'; // À remplacer
 
-    // Panier
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    // Favoris (wishlist)
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
     // Éléments DOM
@@ -678,7 +698,7 @@
       cartTotalAmount.textContent = `${total.toLocaleString()} Ar`;
     }
 
-    function addToCart(id, name, price, image) {
+    window.addToCart = function(id, name, price, image) {
       const existingItem = cart.find(item => item.id === id);
       if (existingItem) {
         existingItem.quantity += 1;
@@ -687,21 +707,21 @@
       }
       updateCartDisplay();
       showNotification('Produit ajouté au panier');
-    }
+    };
 
-    function updateQuantity(index, change) {
+    window.updateQuantity = function(index, change) {
       if (cart[index].quantity + change <= 0) {
         removeFromCart(index);
       } else {
         cart[index].quantity += change;
         updateCartDisplay();
       }
-    }
+    };
 
-    function removeFromCart(index) {
+    window.removeFromCart = function(index) {
       cart.splice(index, 1);
       updateCartDisplay();
-    }
+    };
 
     function checkoutCartWhatsApp() {
       if (cart.length === 0) return;
@@ -758,18 +778,23 @@
 
       // Synchroniser les cœurs sur les produits
       document.querySelectorAll('.wishlist-btn').forEach(btn => {
-        const id = btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
-        if (id && wishlist.some(item => item.id === id)) {
-          btn.classList.add('active');
-          btn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
-        } else {
-          btn.classList.remove('active');
-          btn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+        const onclickAttr = btn.getAttribute('onclick');
+        if (!onclickAttr) return;
+        const match = onclickAttr.match(/'([^']+)'/g);
+        if (match && match.length >= 2) {
+          const id = match[1].replace(/'/g, '');
+          if (id && wishlist.some(item => item.id === id)) {
+            btn.classList.add('active');
+            btn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+          } else {
+            btn.classList.remove('active');
+            btn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+          }
         }
       });
     }
 
-    function toggleWishlist(btn, id, name, price, image) {
+    window.toggleWishlist = function(btn, id, name, price, image) {
       const index = wishlist.findIndex(item => item.id === id);
       if (index === -1) {
         wishlist.push({ id, name, price, image });
@@ -779,14 +804,14 @@
         showNotification('Retiré des favoris');
       }
       updateWishlistDisplay();
-    }
+    };
 
-    function removeFromWishlist(id) {
+    window.removeFromWishlist = function(id) {
       wishlist = wishlist.filter(item => item.id !== id);
       updateWishlistDisplay();
-    }
+    };
 
-    // =============== FONCTIONS UI (panier) ===============
+    // =============== FONCTIONS UI ===============
     function openCart() {
       cartDropdown.classList.add('show');
       if (window.innerWidth <= 768) {
@@ -794,6 +819,7 @@
         document.body.classList.add('cart-open');
       }
     }
+
     function closeCart() {
       cartDropdown.classList.remove('show');
       cartOverlay.style.display = 'none';
@@ -807,6 +833,7 @@
         document.body.classList.add('wishlist-open');
       }
     }
+
     function closeWishlist() {
       wishlistDropdown.classList.remove('show');
       wishlistOverlay.style.display = 'none';
@@ -820,32 +847,53 @@
     }
 
     // =============== MODALE ===============
-    function openModal(productKey) {
+    window.openModal = function(productKey) {
       currentProduct = productKey || 'collection';
       const product = products[currentProduct];
       modalProductName.textContent = `Vous avez choisi ${product.name}`;
       modalOverlay.classList.add('active');
-    }
-    function closeModal() {
+    };
+
+    window.closeModal = function() {
       modalOverlay.classList.remove('active');
-    }
+    };
+
     function openWhatsApp() {
       const product = products[currentProduct];
       window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(product.message)}`, '_blank');
       closeModal();
     }
+
     function openFacebook() {
       const product = products[currentProduct];
       window.open(`https://m.me/${facebookUrl}?text=${encodeURIComponent(product.message)}`, '_blank');
       closeModal();
     }
 
-    // =============== ÉVÉNEMENTS ===============
+    // =============== FONCTION DE RECHERCHE ===============
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const query = e.target.value.toLowerCase().trim();
+        const products = document.querySelectorAll('.group[data-id]');
+        products.forEach(product => {
+          const title = product.querySelector('h3')?.textContent.toLowerCase() || '';
+          const description = product.querySelector('p.text-sm')?.textContent.toLowerCase() || '';
+          if (title.includes(query) || description.includes(query) || query === '') {
+            product.style.display = ''; // réafficher
+          } else {
+            product.style.display = 'none'; // cacher
+          }
+        });
+      });
+    }
+
+    // =============== GESTION DES ÉVÉNEMENTS ===============
     cartButton.addEventListener('click', e => {
       e.stopPropagation();
       if (cartDropdown.classList.contains('show')) closeCart();
       else {
-        closeWishlist(); // fermer l'autre si ouvert
+        closeWishlist();
         openCart();
       }
     });
