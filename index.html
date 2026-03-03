@@ -299,6 +299,22 @@
 
       body.cart-open, body.wishlist-open { overflow: hidden; }
     }
+
+    .group .relative {
+  width: 100%;
+  height: 0;
+  padding-bottom: 125%; /* Ratio 4:5 (5/4 = 1.25 = 125%) */
+  position: relative;
+}
+
+.group .relative img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
@@ -315,8 +331,7 @@
           <nav class="hidden md:flex items-center gap-8">
             <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#accueil">Accueil</a>
             <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#produit">Nos produits</a>
-            <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Cadeaux</a>
-            <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Compte</a>
+            <a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#propos">A propos</a>
           </nav>
         </div>
         <div class="flex flex-1 justify-end gap-6">
@@ -436,8 +451,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="products-grid">
               <!-- Produit 1 -->
               <div class="flex flex-col gap-5 group" data-id="praline" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/choco1.jpg">
-                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
-                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/choco1.jpg" />
+                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
+                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/choco1.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Praliné+Minuit'" />
                   <!-- Bouton cœur -->
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'praline', 'Coffret Praliné Minuit', 19900, 'img/choco1.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
@@ -458,8 +473,8 @@
               </div>
               <!-- Produit 2 -->
               <div class="flex flex-col gap-5 group" data-id="ganache" data-name="Collection Ganache Dorée" data-price="18900" data-image="img/choco2.jpg">
-                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
-                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/choco2.jpg" />
+                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
+                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/choco2.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Ganache+Dorée'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'ganache', 'Collection Ganache Dorée', 18900, 'img/choco2.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -478,8 +493,8 @@
               </div>
               <!-- Produit 3 -->
               <div class="flex flex-col gap-5 group" data-id="truffes" data-name="Sélection de Truffes Signature" data-price="16900" data-image="img/choco3.jpg">
-                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
-                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/choco3.jpg" />
+                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
+                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/choco3.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Truffes+Signature'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'truffes', 'Sélection de Truffes Signature', 16900, 'img/choco3.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -496,10 +511,10 @@
                   <p class="text-primary font-bold text-lg">16 900 Ar</p>
                 </div>
               </div>
-              <!-- Produit 4 (copie pour démo) -->
+              <!-- Produit 4 -->
               <div class="flex flex-col gap-5 group" data-id="truffes2" data-name="Sélection de Truffes Signature" data-price="16900" data-image="img/choco3.jpg">
-                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
-                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/choco3.jpg" />
+                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
+                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/choco3.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Truffes+Signature'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'truffes2', 'Sélection de Truffes Signature', 16900, 'img/choco3.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -518,8 +533,8 @@
               </div>
               <!-- Produit 5 -->
               <div class="flex flex-col gap-5 group" data-id="ganache2" data-name="Collection Ganache Dorée" data-price="18900" data-image="img/choco2.jpg">
-                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
-                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/choco2.jpg" />
+                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
+                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/choco2.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Ganache+Dorée'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'ganache2', 'Collection Ganache Dorée', 18900, 'img/choco2.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -538,8 +553,8 @@
               </div>
               <!-- Produit 6 -->
               <div class="flex flex-col gap-5 group" data-id="praline2" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/choco1.jpg">
-                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
-                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/choco1.jpg" />
+                <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
+                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/choco1.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Praliné+Minuit'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'praline2', 'Coffret Praliné Minuit', 19900, 'img/choco1.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -563,7 +578,7 @@
           <div class="bg-primary/5 dark:bg-primary/10 border-y border-primary/10 py-20 mt-10">
             <div class="max-w-4xl mx-auto px-6 text-center flex flex-col items-center gap-8">
               <div class="flex flex-col gap-4">
-                <span class="text-primary font-bold tracking-widest uppercase text-sm">Qui sommes-nous ?</span>
+                <span class="text-primary font-bold tracking-widest uppercase text-sm" id="propos">Qui sommes-nous ?</span>
                 <h2 class="text-slate-900 dark:text-slate-100 text-4xl md:text-5xl font-serif font-bold leading-tight">Royal Chocolate</h2>
                 <p class="text-slate-600 dark:text-cocoa-light text-lg max-w-2xl mx-auto">
                   Nous sommes une équipe d'étudiants passionnés par le chocolat. Nous avons créé Royal Chocolate pour partager notre amour du bon chocolat fait maison. Chaque coffret est préparé avec soin, avec des ingrédients de qualité, pour vous offrir une expérience gourmande et accessible à tous.
@@ -588,18 +603,21 @@
         </div>
       </main>
 
-<footer class="bg-slate-50 dark:bg-background-dark border-t border-slate-200 dark:border-primary/20 py-10 px-6">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-    <div class="flex items-center gap-2 text-primary">
-      <span class="material-symbols-outlined text-2xl">bakery_dining</span>
-      <span class="font-serif font-bold text-lg text-slate-900 dark:text-white">Royal Choco</span>
+      <!-- Footer stylisé sans réseaux sociaux -->
+      <footer class="bg-slate-50 dark:bg-background-dark border-t border-slate-200 dark:border-primary/20 py-10 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div class="flex items-center gap-2 text-primary">
+            <span class="material-symbols-outlined text-2xl">bakery_dining</span>
+            <span class="font-serif font-bold text-lg text-slate-900 dark:text-white">Royal Choco</span>
+          </div>
+          <p class="text-slate-500 dark:text-cocoa-light text-sm text-center">
+            © Tous droits réservés, HECM L3 – 2026
+          </p>
+        </div>
+      </footer>
     </div>
-    <p class="text-slate-500 dark:text-cocoa-light text-sm text-center">
-      © Tous droits réservés, HECM L3 – 2026
-    </p>
-    <!-- Laisser un espace vide pour garder l'équilibre -->
   </div>
-</footer>
+
   <!-- Notification d'ajout au panier / favoris -->
   <div id="notification" class="notification"><i class="fas fa-check-circle"></i> <span id="notification-message">Produit ajouté au panier</span></div>
 
@@ -619,7 +637,7 @@
   <script>
     // =============== VARIABLES GLOBALES ===============
     const whatsappNumber = '261335936982';
-    const facebookUrl = 'votre.page.facebook'; // À remplacer
+    const facebookUrl = 'tiana.mahery.745631'; // Remplacez par votre nom d'utilisateur Facebook
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
@@ -723,28 +741,53 @@
       updateCartDisplay();
     };
 
-    function checkoutCartWhatsApp() {
-      if (cart.length === 0) return;
-      let message = "Bonjour, je souhaite commander :\n\n";
-      cart.forEach(item => {
-        message += `- ${item.name} x${item.quantity} : ${(item.price * item.quantity).toLocaleString()} Ar\n`;
-      });
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      message += `\nTotal : ${total.toLocaleString()} Ar`;
-      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    // Vider le panier complètement
+    function clearCart() {
+      cart = [];
+      updateCartDisplay();
       closeCart();
     }
 
-    function checkoutCartFacebook() {
+    // Commander depuis le panier (WhatsApp) - avec vidage du panier
+    function checkoutCartWhatsApp() {
       if (cart.length === 0) return;
+      
       let message = "Bonjour, je souhaite commander :\n\n";
       cart.forEach(item => {
         message += `- ${item.name} x${item.quantity} : ${(item.price * item.quantity).toLocaleString()} Ar\n`;
       });
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       message += `\nTotal : ${total.toLocaleString()} Ar`;
-      window.open(`https://m.me/${facebookUrl}?text=${encodeURIComponent(message)}`, '_blank');
+      
+      // Ouvrir WhatsApp
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+      
+      // Vider le panier après envoi
+      cart = [];
+      updateCartDisplay();
       closeCart();
+      showNotification('Commande envoyée ! Panier vidé');
+    }
+
+    // Commander depuis le panier (Facebook Messenger) - avec vidage du panier
+    function checkoutCartFacebook() {
+      if (cart.length === 0) return;
+      
+      let message = "Bonjour, je souhaite commander :\n\n";
+      cart.forEach(item => {
+        message += `- ${item.name} x${item.quantity} : ${(item.price * item.quantity).toLocaleString()} Ar\n`;
+      });
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      message += `\nTotal : ${total.toLocaleString()} Ar`;
+      
+      // Ouvrir Messenger
+      window.open(`https://m.me/${facebookUrl}?text=${encodeURIComponent(message)}`, '_blank');
+      
+      // Vider le panier après envoi
+      cart = [];
+      updateCartDisplay();
+      closeCart();
+      showNotification('Commande envoyée ! Panier vidé');
     }
 
     // =============== FONCTIONS DES FAVORIS ===============
@@ -932,7 +975,7 @@
     facebookBtn.addEventListener('click', openFacebook);
     modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
 
-    // Boutons checkout
+    // Boutons checkout (avec vidage du panier)
     cartCheckoutWhatsapp.addEventListener('click', checkoutCartWhatsApp);
     cartCheckoutFacebook.addEventListener('click', checkoutCartFacebook);
 
