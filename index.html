@@ -1,0 +1,229 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d41132",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221013",
+                        "cocoa-deep": "#221013",
+                        "cocoa-light": "#c9929b",
+                        "gold-accent": "#d4af37"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-primary/20 px-6 md:px-20 py-4 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">bakery_dining</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold leading-tight tracking-tight">Royal Choco</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Collections</a>
+<a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Our Story</a>
+<a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Gifts</a>
+<a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Account</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<label class="hidden lg:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-primary/10">
+<div class="text-slate-500 dark:text-cocoa-light flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-sm placeholder:text-slate-400 dark:placeholder:text-cocoa-light" placeholder="Search our flavors" value=""/>
+</div>
+</label>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-primary/20 text-slate-700 dark:text-slate-100 hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-primary/20 text-slate-700 dark:text-slate-100 hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<div class="@container">
+<div class="p-0 md:p-6 lg:p-10">
+<div class="relative flex min-h-[600px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-none md:rounded-xl items-center justify-center p-8 text-center" data-alt="Close up of melting dark chocolate with gold leaf flakes" style='background-image: linear-gradient(rgba(34, 16, 19, 0.6) 0%, rgba(34, 16, 19, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCl6lMVROGy5ght5dzNs4NQdy85KoO5XGdUj4TiXV4OjOStK1hcpmk3suF6lAk-j-A05pZ4L9VE4B0wll9SK6qoqjN79X-ho27w6uGiak3Z-Wemd7p-0I-o-MKsjMXKtVpQn8uh0TeHlQgufJXTcESjc-NB9Pt9nrQmgt2jSmFqecl7MnXEh9izd1VDenh44IayKLLkIOhhkO2ldWzKJG-YSjjkEP-EZ7QviWGCtvKPKL4LqUbUgClg4SvSdozYOh74mm3Px_XZld4");'>
+<div class="flex flex-col gap-6 max-w-3xl">
+<h1 class="text-white text-5xl md:text-7xl font-serif font-bold leading-tight tracking-tight">
+                                    Exquisite <span class="text-gold-accent">Handcrafted</span> Chocolates
+                                </h1>
+<p class="text-slate-200 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto">
+                                    Experience the symphony of velvet-smooth melting dark chocolate and gold-dusted pralines, curated by our master chocolatiers.
+                                </p>
+</div>
+<div class="flex flex-wrap gap-4 justify-center mt-4">
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-full h-12 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                                    Shop the Collection
+                                </button>
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-full h-12 px-8 bg-white/10 backdrop-blur-md border border-white/20 text-white text-base font-bold hover:bg-white/20 transition-all">
+                                    Our Heritage
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 md:px-10 py-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<div class="flex flex-col gap-2">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">The Art of Selection</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-4xl font-serif font-bold">Chef's Signature Boxes</h2>
+</div>
+<a class="text-primary font-bold flex items-center gap-2 group" href="#">
+                            View All Collections
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<div class="flex flex-col gap-5 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
+<img alt="Midnight Praline" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Box of dark chocolate pralines on a dark marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1qe3KHsBGGQH7LKQ_rK6QaVxiRuVx0kMla4X-BJXMYrfcTNsuMmguZSVv3uruM7OuF-bz9lLjjra3W1g0bqV887UCw1HSss-p3bOGugIZzL7de7MOQPKpF-YnA15WlFbY9q18hVJ_KIbQAuphkSzJl9vvGCi_QO56MPLjQ_g1br_0GBbEtcBqpylvFEhcDHL7uPIKGfAToBjUCu2S6yKxHdxFON2QlcJKiZ5Nq3F3tvDuGDeRQa1cHM-nNUceF0JZ8M17bJ_DuaE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<button class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold">Quick View</button>
+</div>
+</div>
+<div class="text-center md:text-left">
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold mb-1">The Midnight Praline Box</h3>
+<p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">Deep 70% dark chocolate infusions with hints of sea salt and espresso.</p>
+<p class="text-primary font-bold text-lg">$48.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-5 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
+<img alt="Golden Ganache" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Luxury chocolate truffles with gold leaf coating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJSuHJ02nK7uLuQgNSucd-clZH1GALuSzAquN6E81NPTCosnzAdy5r_uGNx8qZ9Xpa02zgaKaZWqW-T2oSPj4OCI157yW2xx1-GXtNTlX9y-Od45dbJ49mxAfK9WT-Qb5AWPPbnSTu2JGseTAFdwuQ3_v0p_EKV1uGOLSSw-6E6ZZ9rYqbO6diklHXRiAtaTSF63dJp6VQ7E0orMD9uRCsWPtcYcvouzEfVqUwBkfzj3KXdEe_4Tnj3N-qmqF-EJexzL3ysh7qwXU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<button class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold">Quick View</button>
+</div>
+</div>
+<div class="text-center md:text-left">
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold mb-1">Golden Ganache Collection</h3>
+<p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">Honey-infused velvet ganache finished with edible 24k gold leaf.</p>
+<p class="text-primary font-bold text-lg">$62.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-5 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl">
+<img alt="Signature Truffle" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Assorted handcrafted chocolate truffles in a wooden box" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqFGnsUm4Srg9nQdbJ2PPJxt3a4ODypDUbaz3zYsYd7gBxYR57dxiqYv3O5TNQJPw9-OEYxPunemDYwPM6zCEKd74wI0_nDh-aXnSdwAFR-iwiq3Ri-gJGoOJqfwHeNch7rQvc_cje2KJu4ci9nlEQPspfdPINncWNCthfC4Ovftrwa-nTREBcKcrpJgUhIu77Uq2WwWmoMaBYdl3ddCCdRymNJdYlDU15rojTBRnyGFpb14C1RbHf0wUXmV27V0rQrG-mcnez4-Y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<button class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold">Quick View</button>
+</div>
+</div>
+<div class="text-center md:text-left">
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold mb-1">Signature Truffle Selection</h3>
+<p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">A curated journey of cocoa from the mountains of Peru to the coasts of Ghana.</p>
+<p class="text-primary font-bold text-lg">$55.00</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 dark:bg-primary/10 border-y border-primary/10 py-20 mt-10">
+<div class="max-w-4xl mx-auto px-6 text-center flex flex-col items-center gap-8">
+<div class="flex flex-col gap-4">
+<h2 class="text-slate-900 dark:text-slate-100 text-4xl md:text-5xl font-serif font-bold leading-tight">
+                                Join the Inner Circle
+                            </h2>
+<p class="text-slate-600 dark:text-cocoa-light text-lg max-w-xl mx-auto">
+                                Subscribe to receive exclusive tasting notes, private collection access, and seasonal gift previews.
+                            </p>
+</div>
+<div class="w-full max-w-lg">
+<form class="flex flex-col sm:flex-row gap-3 w-full">
+<input class="flex-1 rounded-full px-6 py-4 bg-white dark:bg-cocoa-deep border-slate-200 dark:border-primary/20 focus:ring-primary focus:border-primary text-slate-900 dark:text-white" placeholder="Your email address" type="email"/>
+<button class="bg-primary text-white font-bold px-8 py-4 rounded-full hover:bg-primary/90 transition-all whitespace-nowrap shadow-lg shadow-primary/20" type="submit">
+                                    Subscribe
+                                </button>
+</form>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-4 italic">
+                                By subscribing, you agree to our Privacy Policy and Terms of Service.
+                            </p>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-slate-50 dark:bg-background-dark border-t border-slate-200 dark:border-primary/20 py-16 px-6 md:px-20">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-2xl">bakery_dining</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold">Artisanal Cocoa</h2>
+</div>
+<p class="text-slate-500 dark:text-cocoa-light text-sm leading-relaxed">
+                            Crafting unforgettable chocolate experiences since 1984. Every piece is a story of tradition, quality, and passion.
+                        </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-lg">share</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-slate-100 font-bold mb-6">Collections</h4>
+<ul class="flex flex-col gap-4 text-sm text-slate-500 dark:text-cocoa-light">
+<li><a class="hover:text-primary transition-colors" href="#">Dark Chocolate</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Milk Chocolate</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Truffles &amp; Pralines</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Vegan Selections</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-slate-100 font-bold mb-6">Customer Care</h4>
+<ul class="flex flex-col gap-4 text-sm text-slate-500 dark:text-cocoa-light">
+<li><a class="hover:text-primary transition-colors" href="#">Shipping Information</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Returns &amp; Exchanges</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gift Cards</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Store Locator</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-slate-100 font-bold mb-6">Visit Us</h4>
+<p class="text-sm text-slate-500 dark:text-cocoa-light leading-relaxed mb-4">
+                            Flagship Atelier<br/>
+                            128 Cocoa Lane<br/>
+                            Brussels, Belgium
+                        </p>
+<p class="text-sm text-slate-500 dark:text-cocoa-light">
+                            mon-sat: 10am - 8pm<br/>
+                            sun: 11am - 6pm
+                        </p>
+</div>
+</div>
+<div class="max-w-7xl mx-auto pt-16 mt-16 border-t border-slate-200 dark:border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-slate-400 text-xs">© 2024 Artisanal Cocoa Chocolatier. All rights reserved.</p>
+<div class="flex gap-8 text-xs text-slate-400">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+
+```</body></html>
