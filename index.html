@@ -8,6 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn-icons-png.flaticon.com/512/1047/1047711.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn-icons-png.flaticon.com/512/1047/1047711.png">
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1047/1047711.png">
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -37,7 +40,7 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-    /* Conteneurs principaux doivent permettre les débordements pour les dropdowns */
+    /* Conteneurs principaux doivent permettre les débordements */
     header, .layout-container, .relative {
       overflow: visible !important;
     }
@@ -46,6 +49,76 @@
     .cart-button-container,
     .wishlist-button-container {
       position: relative;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Effet de brillance sur les produits */
+    .group {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .group::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+      transform: rotate(25deg);
+      animation: shine 6s infinite;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(25deg); }
+      20% { transform: translateX(100%) rotate(25deg); }
+      100% { transform: translateX(100%) rotate(25deg); }
+    }
+
+    /* ========== BADGES ========== */
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      left: 50px;
+      z-index: 15;
+      background-color: #d4af37;
+      color: #221013;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .dark .product-badge {
+      background-color: #d4af37;
+      color: #221013;
+    }
+
+    /* Étoiles d'avis */
+    .stars {
+      display: flex;
+      gap: 2px;
+      color: #fbbf24;
+      font-size: 1rem;
+    }
+
+    .stars .material-symbols-outlined {
+      font-size: 1rem;
     }
 
     /* ========== MODALE ========== */
@@ -87,7 +160,7 @@
     .dark .modal-close { color: #aaa; }
     .modal-close:hover { color: #d41132; }
 
-    /* ========== BADGES ========== */
+    /* ========== BADGES PANIER/FAVORIS ========== */
     .cart-badge, .wishlist-badge {
       position: absolute;
       top: -5px;
@@ -167,7 +240,7 @@
       .notification.show { transform: translateY(0); }
     }
 
-    /* ========== DROPDOWN PANIER / FAVORIS (DESKTOP) ========== */
+    /* ========== DROPDOWN PANIER / FAVORIS ========== */
     .cart-dropdown, .wishlist-dropdown {
       position: absolute;
       top: 100%;
@@ -227,7 +300,7 @@
 
     .cart-button-container, .wishlist-button-container { position: relative; }
 
-    /* ========== STYLES MOBILE (BOTTOM SHEET) ========== */
+    /* ========== STYLES MOBILE ========== */
     @media (max-width: 768px) {
       .cart-dropdown, .wishlist-dropdown {
         position: fixed !important;
@@ -300,21 +373,44 @@
       body.cart-open, body.wishlist-open { overflow: hidden; }
     }
 
+    /* Uniformisation des images */
     .group .relative {
-  width: 100%;
-  height: 0;
-  padding-bottom: 125%; /* Ratio 4:5 (5/4 = 1.25 = 125%) */
-  position: relative;
-}
+      width: 100%;
+      height: 0;
+      padding-bottom: 125%; /* Ratio 4:5 */
+      position: relative;
+    }
 
-.group .relative img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .group .relative img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Bouton vider le panier */
+    .clear-cart-btn {
+      color: #999;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 8px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .clear-cart-btn:hover {
+      color: #d41132;
+    }
+
+    /* Filtres de catégorie */
+    .filter-btn {
+      transition: all 0.3s;
+    }
+    .filter-btn.active {
+      background-color: #d41132;
+      color: white;
+    }
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
@@ -373,6 +469,7 @@
                         <i class="fab fa-facebook-messenger"></i> Commander sur Messenger
                       </button>
                     </div>
+                    <div class="clear-cart-btn" onclick="clearCart()">Vider le panier</div>
                   </div>
                 </div>
                 <div id="empty-cart" class="empty-cart">Votre panier est vide</div>
@@ -407,11 +504,11 @@
         </div>
       </header>
 
-      <!-- Overlay pour mobile (panier et favoris) -->
+      <!-- Overlay pour mobile -->
       <div id="cart-overlay" class="cart-overlay" style="display: none;"></div>
       <div id="wishlist-overlay" class="wishlist-overlay" style="display: none;"></div>
 
-      <!-- MAIN CONTENT (avec padding-top pour compenser le header fixe) -->
+      <!-- MAIN CONTENT -->
       <main class="flex-1 pt-[72px] md:pt-20">
         <div class="@container">
           <!-- Bannière héro -->
@@ -430,34 +527,29 @@
                   Acheter la collection
                 </button>
                 <button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-full h-12 px-8 bg-white/10 backdrop-blur-md border border-white/20 text-white text-base font-bold hover:bg-white/20 transition-all">
-                  Notre histoire
+                  <a href="#propos">Notre histoire</a>
                 </button>
               </div>
             </div>
           </div>
 
           <!-- Section Produits -->
-          <div class="max-w-7xl mx-auto px-6 md:px-10 py-16" id="produit">
+          <div class="max-w-7xl mx-auto px-6 md:px-10 py-8" id="produit">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
               <div class="flex flex-col gap-2">
                 <span class="text-primary font-bold tracking-widest uppercase text-xs">L'art de la sélection</span>
                 <h2 class="text-slate-900 dark:text-slate-100 text-4xl font-serif font-bold">Coffrets Signature du Chef</h2>
               </div>
-              <a class="text-primary font-bold flex items-center gap-2 group" href="#">
-                Voir toutes les collections
-                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="products-grid">
               <!-- Produit 1 -->
-              <div class="flex flex-col gap-5 group" data-id="praline" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/choco1.jpg">
+              <div class="flex flex-col gap-5 group fade-in" data-id="praline" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/choco1.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/choco1.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Praliné+Minuit'" />
-                  <!-- Bouton cœur -->
+                  <div class="product-badge">Nouveau</div>
+                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/choco1.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Praliné+Minuit'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'praline', 'Coffret Praliné Minuit', 19900, 'img/choco1.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
-                  <!-- Bouton + -->
                   <div class="add-to-cart-btn" onclick="addToCart('praline', 'Coffret Praliné Minuit', 19900, 'img/choco1.jpg')">+</div>
                   <div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                     <button onclick="openModal('praline')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
@@ -467,14 +559,24 @@
                 </div>
                 <div class="text-center md:text-left">
                   <h3 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold mb-1">Coffret Praliné Minuit</h3>
+                  <div class="flex justify-center md:justify-start items-center gap-1 mb-2">
+                    <div class="stars">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star_half</span>
+                    </div>
+                    <span class="text-xs text-gray-500 ml-1">(4.5)</span>
+                  </div>
                   <p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">Infusions de chocolat noir 70% avec une pointe de sel marin et d'espresso.</p>
                   <p class="text-primary font-bold text-lg">19 900 Ar</p>
                 </div>
               </div>
               <!-- Produit 2 -->
-              <div class="flex flex-col gap-5 group" data-id="ganache" data-name="Collection Ganache Dorée" data-price="18900" data-image="img/choco2.jpg">
+              <div class="flex flex-col gap-5 group fade-in" data-id="ganache" data-name="Collection Ganache Dorée" data-price="18900" data-image="img/choco2.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/choco2.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Ganache+Dorée'" />
+                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/choco2.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Ganache+Dorée'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'ganache', 'Collection Ganache Dorée', 18900, 'img/choco2.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -487,14 +589,24 @@
                 </div>
                 <div class="text-center md:text-left">
                   <h3 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold mb-1">Collection Ganache Dorée</h3>
+                  <div class="flex justify-center md:justify-start items-center gap-1 mb-2">
+                    <div class="stars">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <span class="text-xs text-gray-500 ml-1">(5.0)</span>
+                  </div>
                   <p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">Ganache veloutée au miel, finition à l'or 24 carats.</p>
                   <p class="text-primary font-bold text-lg">18 900 Ar</p>
                 </div>
               </div>
               <!-- Produit 3 -->
-              <div class="flex flex-col gap-5 group" data-id="truffes" data-name="Sélection de Truffes Signature" data-price="16900" data-image="img/choco3.jpg">
+              <div class="flex flex-col gap-5 group fade-in" data-id="truffes" data-name="Sélection de Truffes Signature" data-price="16900" data-image="img/choco3.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/choco3.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Truffes+Signature'" />
+                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/choco3.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Truffes+Signature'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'truffes', 'Sélection de Truffes Signature', 16900, 'img/choco3.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -507,14 +619,24 @@
                 </div>
                 <div class="text-center md:text-left">
                   <h3 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold mb-1">Sélection de Truffes Signature</h3>
+                  <div class="flex justify-center md:justify-start items-center gap-1 mb-2">
+                    <div class="stars">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <span class="text-xs text-gray-500 ml-1">(5.0)</span>
+                  </div>
                   <p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">Un voyage à travers les cacaos des montagnes du Pérou aux côtes du Ghana.</p>
                   <p class="text-primary font-bold text-lg">16 900 Ar</p>
                 </div>
               </div>
               <!-- Produit 4 -->
-              <div class="flex flex-col gap-5 group" data-id="truffes2" data-name="Sélection de Truffes Signature" data-price="16900" data-image="img/choco3.jpg">
+              <div class="flex flex-col gap-5 group fade-in hidden-product" data-id="truffes2" data-name="Sélection de Truffes Signature" data-price="16900" data-image="img/choco3.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/choco3.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Truffes+Signature'" />
+                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/choco3.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Truffes+Signature'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'truffes2', 'Sélection de Truffes Signature', 16900, 'img/choco3.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -527,14 +649,24 @@
                 </div>
                 <div class="text-center md:text-left">
                   <h3 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold mb-1">Sélection de Truffes Signature</h3>
+                  <div class="flex justify-center md:justify-start items-center gap-1 mb-2">
+                    <div class="stars">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star_half</span>
+                    </div>
+                    <span class="text-xs text-gray-500 ml-1">(4.5)</span>
+                  </div>
                   <p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">Un voyage à travers les cacaos des montagnes du Pérou aux côtes du Ghana.</p>
                   <p class="text-primary font-bold text-lg">16 900 Ar</p>
                 </div>
               </div>
               <!-- Produit 5 -->
-              <div class="flex flex-col gap-5 group" data-id="ganache2" data-name="Collection Ganache Dorée" data-price="18900" data-image="img/choco2.jpg">
+              <div class="flex flex-col gap-5 group fade-in hidden-product" data-id="ganache2" data-name="Collection Ganache Dorée" data-price="18900" data-image="img/choco2.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/choco2.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Ganache+Dorée'" />
+                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/choco2.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Ganache+Dorée'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'ganache2', 'Collection Ganache Dorée', 18900, 'img/choco2.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -547,14 +679,25 @@
                 </div>
                 <div class="text-center md:text-left">
                   <h3 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold mb-1">Collection Ganache Dorée</h3>
+                  <div class="flex justify-center md:justify-start items-center gap-1 mb-2">
+                    <div class="stars">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <span class="text-xs text-gray-500 ml-1">(5.0)</span>
+                  </div>
                   <p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">Ganache veloutée au miel, finition à l'or 24 carats.</p>
                   <p class="text-primary font-bold text-lg">18 900 Ar</p>
                 </div>
               </div>
               <!-- Produit 6 -->
-              <div class="flex flex-col gap-5 group" data-id="praline2" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/choco1.jpg">
+              <div class="flex flex-col gap-5 group fade-in hidden-product" data-id="praline2" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/choco1.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/choco1.jpg" onerror="this.src='https://via.placeholder.com/400x500?text=Praliné+Minuit'" />
+                  <div class="product-badge">Promo</div>
+                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/choco1.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Praliné+Minuit'" />
                   <button class="wishlist-btn" onclick="toggleWishlist(this, 'praline2', 'Coffret Praliné Minuit', 19900, 'img/choco1.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
@@ -567,6 +710,16 @@
                 </div>
                 <div class="text-center md:text-left">
                   <h3 class="text-slate-900 dark:text-slate-100 text-xl font-serif font-bold mb-1">Coffret Praliné Minuit</h3>
+                  <div class="flex justify-center md:justify-start items-center gap-1 mb-2">
+                    <div class="stars">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star_half</span>
+                    </div>
+                    <span class="text-xs text-gray-500 ml-1">(4.5)</span>
+                  </div>
                   <p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">Infusions de chocolat noir 70% avec une pointe de sel marin et d'espresso.</p>
                   <p class="text-primary font-bold text-lg">19 900 Ar</p>
                 </div>
@@ -575,10 +728,10 @@
           </div>
 
           <!-- Section Présentation Royal Chocolate -->
-          <div class="bg-primary/5 dark:bg-primary/10 border-y border-primary/10 py-20 mt-10">
+          <div class="bg-primary/5 dark:bg-primary/10 border-y border-primary/10 py-20 mt-10" id="propos">
             <div class="max-w-4xl mx-auto px-6 text-center flex flex-col items-center gap-8">
               <div class="flex flex-col gap-4">
-                <span class="text-primary font-bold tracking-widest uppercase text-sm" id="propos">Qui sommes-nous ?</span>
+                <span class="text-primary font-bold tracking-widest uppercase text-sm">Qui sommes-nous ?</span>
                 <h2 class="text-slate-900 dark:text-slate-100 text-4xl md:text-5xl font-serif font-bold leading-tight">Royal Chocolate</h2>
                 <p class="text-slate-600 dark:text-cocoa-light text-lg max-w-2xl mx-auto">
                   Nous sommes une équipe d'étudiants passionnés par le chocolat. Nous avons créé Royal Chocolate pour partager notre amour du bon chocolat fait maison. Chaque coffret est préparé avec soin, avec des ingrédients de qualité, pour vous offrir une expérience gourmande et accessible à tous.
@@ -603,7 +756,7 @@
         </div>
       </main>
 
-      <!-- Footer stylisé sans réseaux sociaux -->
+      <!-- Footer -->
       <footer class="bg-slate-50 dark:bg-background-dark border-t border-slate-200 dark:border-primary/20 py-10 px-6">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div class="flex items-center gap-2 text-primary">
@@ -618,10 +771,10 @@
     </div>
   </div>
 
-  <!-- Notification d'ajout au panier / favoris -->
+  <!-- Notification -->
   <div id="notification" class="notification"><i class="fas fa-check-circle"></i> <span id="notification-message">Produit ajouté au panier</span></div>
 
-  <!-- Modale pour choisir WhatsApp/Facebook -->
+  <!-- Modale -->
   <div id="modal-overlay" class="modal-overlay">
     <div class="modal-content">
       <h3 class="text-2xl font-serif font-bold mb-4">Comment voulez-vous commander ?</h3>
@@ -637,7 +790,7 @@
   <script>
     // =============== VARIABLES GLOBALES ===============
     const whatsappNumber = '261335936982';
-    const facebookUrl = 'tiana.mahery.745631'; // Remplacez par votre nom d'utilisateur Facebook
+    const facebookUrl = 'tiana.mahery.745631';
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
@@ -667,6 +820,7 @@
     const facebookBtn = document.getElementById('modal-facebook');
     const cartCheckoutWhatsapp = document.getElementById('cart-checkout-whatsapp');
     const cartCheckoutFacebook = document.getElementById('cart-checkout-facebook');
+    const viewAllBtn = document.getElementById('view-all-btn');
 
     const products = {
       'collection': { name: 'la collection de chocolats Royal Choco', message: 'Bonjour, je souhaite commander la collection de chocolats Royal Choco' },
@@ -741,14 +895,13 @@
       updateCartDisplay();
     };
 
-    // Vider le panier complètement
-    function clearCart() {
+    window.clearCart = function() {
       cart = [];
       updateCartDisplay();
       closeCart();
-    }
+      showNotification('Panier vidé');
+    };
 
-    // Commander depuis le panier (WhatsApp) - avec vidage du panier
     function checkoutCartWhatsApp() {
       if (cart.length === 0) return;
       
@@ -759,17 +912,14 @@
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       message += `\nTotal : ${total.toLocaleString()} Ar`;
       
-      // Ouvrir WhatsApp
       window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
       
-      // Vider le panier après envoi
       cart = [];
       updateCartDisplay();
       closeCart();
       showNotification('Commande envoyée ! Panier vidé');
     }
 
-    // Commander depuis le panier (Facebook Messenger) - avec vidage du panier
     function checkoutCartFacebook() {
       if (cart.length === 0) return;
       
@@ -780,10 +930,8 @@
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       message += `\nTotal : ${total.toLocaleString()} Ar`;
       
-      // Ouvrir Messenger
       window.open(`https://m.me/${facebookUrl}?text=${encodeURIComponent(message)}`, '_blank');
       
-      // Vider le panier après envoi
       cart = [];
       updateCartDisplay();
       closeCart();
@@ -819,7 +967,6 @@
       });
       wishlistItemsContainer.innerHTML = html;
 
-      // Synchroniser les cœurs sur les produits
       document.querySelectorAll('.wishlist-btn').forEach(btn => {
         const onclickAttr = btn.getAttribute('onclick');
         if (!onclickAttr) return;
@@ -923,11 +1070,54 @@
           const title = product.querySelector('h3')?.textContent.toLowerCase() || '';
           const description = product.querySelector('p.text-sm')?.textContent.toLowerCase() || '';
           if (title.includes(query) || description.includes(query) || query === '') {
-            product.style.display = ''; // réafficher
+            product.style.display = '';
           } else {
-            product.style.display = 'none'; // cacher
+            product.style.display = 'none';
           }
         });
+      });
+    }
+
+
+
+
+
+    // =============== ANIMATION AU SCROLL ===============
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // =============== SWIPE POUR FERMER LE PANIER SUR MOBILE ===============
+    let startY = 0;
+    if (cartDropdown) {
+      cartDropdown.addEventListener('touchstart', e => {
+        startY = e.touches[0].clientY;
+      });
+
+      cartDropdown.addEventListener('touchmove', e => {
+        const diff = e.touches[0].clientY - startY;
+        if (diff > 50 && cartDropdown.classList.contains('show')) {
+          closeCart();
+        }
+      });
+    }
+
+    if (wishlistDropdown) {
+      wishlistDropdown.addEventListener('touchstart', e => {
+        startY = e.touches[0].clientY;
+      });
+
+      wishlistDropdown.addEventListener('touchmove', e => {
+        const diff = e.touches[0].clientY - startY;
+        if (diff > 50 && wishlistDropdown.classList.contains('show')) {
+          closeWishlist();
+        }
       });
     }
 
@@ -950,7 +1140,6 @@
       }
     });
 
-    // Fermeture en cliquant en dehors (desktop)
     document.addEventListener('click', e => {
       if (window.innerWidth > 768) {
         if (!cartButton.contains(e.target) && !cartDropdown.contains(e.target)) {
@@ -962,20 +1151,16 @@
       }
     });
 
-    // Fermeture par overlay mobile
     cartOverlay.addEventListener('click', closeCart);
     wishlistOverlay.addEventListener('click', closeWishlist);
 
-    // Empêcher la fermeture en cliquant à l'intérieur
     cartDropdown.addEventListener('click', e => e.stopPropagation());
     wishlistDropdown.addEventListener('click', e => e.stopPropagation());
 
-    // Boutons modale
     whatsappBtn.addEventListener('click', openWhatsApp);
     facebookBtn.addEventListener('click', openFacebook);
     modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
 
-    // Boutons checkout (avec vidage du panier)
     cartCheckoutWhatsapp.addEventListener('click', checkoutCartWhatsApp);
     cartCheckoutFacebook.addEventListener('click', checkoutCartFacebook);
 
