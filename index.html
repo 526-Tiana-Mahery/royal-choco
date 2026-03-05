@@ -543,16 +543,16 @@
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="products-grid">
-              <!-- Produit 1 -->
-              <div class="flex flex-col gap-5 group fade-in" data-id="praline" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/petite.jpg">
+              <!-- Produit 1 - Mini Délices Chocolat -->
+              <div class="flex flex-col gap-5 group fade-in" data-id="mini-delices" data-name="Mini Délices Chocolat" data-price="1000" data-image="img/petite.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/petite.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Praliné+Minuit'" />
-                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'praline', 'Coffret Praliné Minuit', 19900, 'img/petite.jpg')">
+                  <img alt="Mini Délices Chocolat" class="w-full h-full object-cover" src="img/petite.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Mini+Délices'" />
+                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'mini-delices', 'Mini Délices Chocolat', 1000, 'img/petite.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
-                  <div class="add-to-cart-btn" onclick="addToCart('praline', 'Coffret Praliné Minuit', 19900, 'img/petite.jpg')">+</div>
+                  <div class="add-to-cart-btn" onclick="addToCart('mini-delices', 'Mini Délices Chocolat', 1000, 'img/petite.jpg')">+</div>
                   <div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <button onclick="openModal('praline')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+                    <button onclick="openModal('mini-delices')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
                       Commander
                     </button>
                   </div>
@@ -572,22 +572,23 @@
                   </div>
 
                   <p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">
-                    De petits chocolats en forme d’étoile, de cœur et de rond, au goût riche et à la texture fondante.
+                    De petits chocolats en forme d'étoile, de cœur et de rond, au goût riche et à la texture fondante.
                   </p>
 
                   <p class="text-primary font-bold text-lg">1 000 Ar</p>
                 </div>
               </div>
-              <!-- Produit 2 -->
-              <div class="flex flex-col gap-5 group fade-in" data-id="ganache" data-name="Collection Ganache Dorée" data-price="18900" data-image="img/moyenne.jpg">
+              
+              <!-- Produit 2 - Délices Chocolat Classique -->
+              <div class="flex flex-col gap-5 group fade-in" data-id="classique" data-name="Délices Chocolat Classique" data-price="1500" data-image="img/moyenne.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/moyenne.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Ganache+Dorée'" />
-                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'ganache', 'Collection Ganache Dorée', 18900, 'img/moyenne.jpg')">
+                  <img alt="Délices Chocolat Classique" class="w-full h-full object-cover" src="img/moyenne.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Classique'" />
+                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'classique', 'Délices Chocolat Classique', 1500, 'img/moyenne.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
-                  <div class="add-to-cart-btn" onclick="addToCart('ganache', 'Collection Ganache Dorée', 18900, 'img/moyenne.jpg')">+</div>
+                  <div class="add-to-cart-btn" onclick="addToCart('classique', 'Délices Chocolat Classique', 1500, 'img/moyenne.jpg')">+</div>
                   <div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <button onclick="openModal('ganache')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+                    <button onclick="openModal('classique')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
                       Commander
                     </button>
                   </div>
@@ -607,22 +608,23 @@
                 </div>
 
                 <p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">
-                  Chocolats de taille moyenne en forme d’étoile, de cœur et de rond, avec une texture fondante et un goût riche en cacao.
+                  Chocolats de taille moyenne en forme d'étoile, de cœur et de rond, avec une texture fondante et un goût riche en cacao.
                 </p>
 
                 <p class="text-primary font-bold text-lg">1 500 Ar</p>
               </div>
               </div>
-              <!-- Produit 3 -->
-              <div class="flex flex-col gap-5 group fade-in" data-id="truffes" data-name="Sélection de Truffes Signature" data-price="16900" data-image="img/grande.jpg">
+              
+              <!-- Produit 3 - Délices Chocolat Premium -->
+              <div class="flex flex-col gap-5 group fade-in" data-id="premium" data-name="Délices Chocolat Premium" data-price="2900" data-image="img/grande.jpg">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/grande.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Truffes+Signature'" />
-                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'truffes', 'Sélection de Truffes Signature', 16900, 'img/grande.jpg')">
+                  <img alt="Délices Chocolat Premium" class="w-full h-full object-cover" src="img/grande.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Premium'" />
+                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'premium', 'Délices Chocolat Premium', 2900, 'img/grande.jpg')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
-                  <div class="add-to-cart-btn" onclick="addToCart('truffes', 'Sélection de Truffes Signature', 16900, 'img/grande.jpg')">+</div>
+                  <div class="add-to-cart-btn" onclick="addToCart('premium', 'Délices Chocolat Premium', 2900, 'img/grande.jpg')">+</div>
                   <div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <button onclick="openModal('truffes')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+                    <button onclick="openModal('premium')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
                       Commander
                     </button>
                   </div>
@@ -642,22 +644,23 @@
                   </div>
 
                   <p class="text-slate-500 dark:text-cocoa-light text-sm mb-3">
-                    Chocolats légèrement plus grands en forme d’étoile, de cœur et de rond, avec une texture fondante et un goût riche en cacao.
+                    Chocolats légèrement plus grands en forme d'étoile, de cœur et de rond, avec une texture fondante et un goût riche en cacao.
                   </p>
 
                   <p class="text-primary font-bold text-lg">2 900 Ar</p>
                 </div>
               </div>
-              <!-- Produit 4 -->
-              <div class="flex flex-col gap-5 group fade-in hidden-product" data-id="truffes2" data-name="Sélection de Truffes Signature" data-price="16900" data-image="img/grande.jpg">
+              
+              <!-- Produit 4 - Délice Fraise Chocolat -->
+              <div class="flex flex-col gap-5 group fade-in" data-id="fraise" data-name="Délice Fraise Chocolat" data-price="9900" data-image="img/fraise.png">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Truffes Signature" class="w-full h-full object-cover" src="img/fraise.png" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Truffes+Signature'" />
-                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'truffes2', 'Sélection de Truffes Signature', 16900, 'img/fraise.png')">
+                  <img alt="Délice Fraise Chocolat" class="w-full h-full object-cover" src="img/fraise.png" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Fraise'" />
+                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'fraise', 'Délice Fraise Chocolat', 9900, 'img/fraise.png')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
-                  <div class="add-to-cart-btn" onclick="addToCart('truffes2', 'Sélection de Truffes Signature', 16900, 'img/fraise.png')">+</div>
+                  <div class="add-to-cart-btn" onclick="addToCart('fraise', 'Délice Fraise Chocolat', 9900, 'img/fraise.png')">+</div>
                   <div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <button onclick="openModal('truffes')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+                    <button onclick="openModal('fraise')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
                       Commander
                     </button>
                   </div>
@@ -683,16 +686,17 @@
                 <p class="text-primary font-bold text-lg">9 900 Ar</p>
               </div>
               </div>
-              <!-- Produit 5 -->
-              <div class="flex flex-col gap-5 group fade-in hidden-product" data-id="ganache2" data-name="Collection Ganache Dorée" data-price="18900" data-image="img/moyenne.jpg">
+              
+              <!-- Produit 5 - Délice Coco Chocolat -->
+              <div class="flex flex-col gap-5 group fade-in" data-id="coco" data-name="Délice Coco Chocolat" data-price="9900" data-image="img/coco.png">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Ganache Dorée" class="w-full h-full object-cover" src="img/coco.png" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Ganache+Dorée'" />
-                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'ganache2', 'Collection Ganache Dorée', 18900, 'img/coco.png')">
+                  <img alt="Délice Coco Chocolat" class="w-full h-full object-cover" src="img/coco.png" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Coco'" />
+                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'coco', 'Délice Coco Chocolat', 9900, 'img/coco.png')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
-                  <div class="add-to-cart-btn" onclick="addToCart('ganache2', 'Collection Ganache Dorée', 18900, 'img/coco.png')">+</div>
+                  <div class="add-to-cart-btn" onclick="addToCart('coco', 'Délice Coco Chocolat', 9900, 'img/coco.png')">+</div>
                   <div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <button onclick="openModal('ganache')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+                    <button onclick="openModal('coco')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
                       Commander
                     </button>
                   </div>
@@ -718,16 +722,17 @@
                 <p class="text-primary font-bold text-lg">9 900 Ar</p>
               </div>
               </div>
-              <!-- Produit 6 -->
-              <div class="flex flex-col gap-5 group fade-in hidden-product" data-id="praline2" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/vanille.png">
+              
+              <!-- Produit 6 - Délice Vanille Chocolat -->
+              <div class="flex flex-col gap-5 group fade-in" data-id="vanille" data-name="Délice Vanille Chocolat" data-price="9900" data-image="img/vanille.png">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/vanille.png" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Praliné+Minuit'" />
-                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'praline2', 'Coffret Praliné Minuit', 19900, 'img/vanille.png')">
+                  <img alt="Délice Vanille Chocolat" class="w-full h-full object-cover" src="img/vanille.png" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Vanille'" />
+                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'vanille', 'Délice Vanille Chocolat', 9900, 'img/vanille.png')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
-                  <div class="add-to-cart-btn" onclick="addToCart('praline2', 'Coffret Praliné Minuit', 19900, 'img/vanille.png')">+</div>
+                  <div class="add-to-cart-btn" onclick="addToCart('vanille', 'Délice Vanille Chocolat', 9900, 'img/vanille.png')">+</div>
                   <div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <button onclick="openModal('praline')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+                    <button onclick="openModal('vanille')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
                       Commander
                     </button>
                   </div>
@@ -753,16 +758,17 @@
                 <p class="text-primary font-bold text-lg">9 900 Ar</p>
               </div>
               </div>
-              <!-- Produit 6 -->
-              <div class="flex flex-col gap-5 group fade-in hidden-product" data-id="praline2" data-name="Coffret Praliné Minuit" data-price="19900" data-image="img/cafe.png">
+              
+              <!-- Produit 7 - Délice Café Chocolat -->
+              <div class="flex flex-col gap-5 group fade-in" data-id="cafe" data-name="Délice Café Chocolat" data-price="9900" data-image="img/cafe.png">
                 <div class="relative overflow-hidden rounded-xl aspect-[4/5] shadow-xl bg-gray-100">
-                  <img alt="Praliné Minuit" class="w-full h-full object-cover" src="img/cafe.png" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Praliné+Minuit'" />
-                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'praline2', 'Coffret Praliné Minuit', 19900, 'img/vanille.png')">
+                  <img alt="Délice Café Chocolat" class="w-full h-full object-cover" src="img/cafe.png" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500?text=Café'" />
+                  <button class="wishlist-btn" onclick="toggleWishlist(this, 'cafe', 'Délice Café Chocolat', 9900, 'img/cafe.png')">
                     <span class="material-symbols-outlined">favorite</span>
                   </button>
-                  <div class="add-to-cart-btn" onclick="addToCart('praline2', 'Coffret Praliné Minuit', 19900, 'img/cafe.png')">+</div>
+                  <div class="add-to-cart-btn" onclick="addToCart('cafe', 'Délice Café Chocolat', 9900, 'img/cafe.png')">+</div>
                   <div class="absolute inset-0 bg-gradient-to-t from-cocoa-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <button onclick="openModal('praline')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+                    <button onclick="openModal('cafe')" class="bg-white text-cocoa-deep w-full py-3 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
                       Commander
                     </button>
                   </div>
@@ -787,6 +793,7 @@
 
                   <p class="text-primary font-bold text-lg">9 900 Ar</p>
                 </div>
+              </div>
             </div>
           </div>
 
@@ -883,13 +890,17 @@
     const facebookBtn = document.getElementById('modal-facebook');
     const cartCheckoutWhatsapp = document.getElementById('cart-checkout-whatsapp');
     const cartCheckoutFacebook = document.getElementById('cart-checkout-facebook');
-    const viewAllBtn = document.getElementById('view-all-btn');
 
+    // Mapping des produits pour la modale
     const products = {
       'collection': { name: 'la collection de chocolats Royal Choco', message: 'Bonjour, je souhaite commander la collection de chocolats Royal Choco' },
-      'praline': { name: 'le Coffret Praliné Minuit (19 900 Ar)', message: 'Bonjour, je souhaite commander le Coffret Praliné Minuit (19 900 Ar)' },
-      'ganache': { name: 'la Collection Ganache Dorée (18 900 Ar)', message: 'Bonjour, je souhaite commander la Collection Ganache Dorée (18 900 Ar)' },
-      'truffes': { name: 'la Sélection de Truffes Signature (16 900 Ar)', message: 'Bonjour, je souhaite commander la Sélection de Truffes Signature (16 900 Ar)' }
+      'mini-delices': { name: 'Mini Délices Chocolat (1 000 Ar)', message: 'Bonjour, je souhaite commander les Mini Délices Chocolat (1 000 Ar)' },
+      'classique': { name: 'Délices Chocolat Classique (1 500 Ar)', message: 'Bonjour, je souhaite commander les Délices Chocolat Classique (1 500 Ar)' },
+      'premium': { name: 'Délices Chocolat Premium (2 900 Ar)', message: 'Bonjour, je souhaite commander les Délices Chocolat Premium (2 900 Ar)' },
+      'fraise': { name: 'Délice Fraise Chocolat (9 900 Ar)', message: 'Bonjour, je souhaite commander le Délice Fraise Chocolat (9 900 Ar)' },
+      'coco': { name: 'Délice Coco Chocolat (9 900 Ar)', message: 'Bonjour, je souhaite commander le Délice Coco Chocolat (9 900 Ar)' },
+      'vanille': { name: 'Délice Vanille Chocolat (9 900 Ar)', message: 'Bonjour, je souhaite commander le Délice Vanille Chocolat (9 900 Ar)' },
+      'cafe': { name: 'Délice Café Chocolat (9 900 Ar)', message: 'Bonjour, je souhaite commander le Délice Café Chocolat (9 900 Ar)' }
     };
     let currentProduct = 'collection';
 
@@ -1103,7 +1114,11 @@
     window.openModal = function(productKey) {
       currentProduct = productKey || 'collection';
       const product = products[currentProduct];
-      modalProductName.textContent = `Vous avez choisi ${product.name}`;
+      if (product) {
+        modalProductName.textContent = `Vous avez choisi ${product.name}`;
+      } else {
+        modalProductName.textContent = `Vous avez choisi un produit Royal Choco`;
+      }
       modalOverlay.classList.add('active');
     };
 
@@ -1113,13 +1128,17 @@
 
     function openWhatsApp() {
       const product = products[currentProduct];
-      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(product.message)}`, '_blank');
+      if (product) {
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(product.message)}`, '_blank');
+      }
       closeModal();
     }
 
     function openFacebook() {
       const product = products[currentProduct];
-      window.open(`https://m.me/${facebookUrl}?text=${encodeURIComponent(product.message)}`, '_blank');
+      if (product) {
+        window.open(`https://m.me/${facebookUrl}?text=${encodeURIComponent(product.message)}`, '_blank');
+      }
       closeModal();
     }
 
@@ -1140,10 +1159,6 @@
         });
       });
     }
-
-
-
-
 
     // =============== ANIMATION AU SCROLL ===============
     const observer = new IntersectionObserver((entries) => {
